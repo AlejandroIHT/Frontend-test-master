@@ -1,20 +1,43 @@
 import React from "react";
-import Storage from "../libs/storage";
+import "../styles/containers/welcomeScreen.css";
+import rabbit from "../assets/welcome/Rabbit.svg";
+import add from "../assets/welcome/Add.svg";
+import bell from "../assets/welcome/Bell.svg";
+import stopwatch from "../assets/welcome/Stopwatch.svg";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ handleClick }) => {
   return (
     <div className="WelcomeScreen">
-      <div className="WelcomeScreen__container--icons"></div>
-      <div className="WelcomeScreen__container--title">
-        <h1 className="title__text">Welcome to Counters</h1>
+      <div className="WelcomeScreen__container--icons">
+        <div className="Icons__square--topLeft">
+          <img
+            className="Icons__square--icon rabbit"
+            src={rabbit}
+            alt="rabbit"
+          />
+        </div>
+        <div className="Icons__square--topRight">
+          <img className="Icons__square--icon" src={bell} alt="bell" />
+        </div>
+        <div className="Icons__square--bottomLeft">
+          <img
+            className="Icons__square--icon"
+            src={stopwatch}
+            alt="stopwatch"
+          />
+        </div>
+        <div className="Icons__square--bottomRight">
+          <img className="Icons__square--icon" src={add} alt="add" />
+        </div>
       </div>
-      <div className="WelcomeScreen__container--p">
-        <p className="p__text">
-          Capture cups of lattes, frapuccinos, or anything else that can be
-          counted.
-        </p>
-      </div>
-      <button className="WelcomeScreen__start">Get started</button>
+      <h1 className="WelcomeScreen__title">Welcome to Counters</h1>
+      <p className="WelcomeScreen__body--p">
+        Capture cups of lattes, frapuccinos, or anything else that can be
+        counted.
+      </p>
+      <button className="WelcomeScreen__start" onClick={handleClick}>
+        Get started
+      </button>
     </div>
   );
 };

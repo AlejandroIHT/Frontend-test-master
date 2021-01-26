@@ -11,12 +11,18 @@ const App = () => {
   const initialState = useInitialState();
   useEffect(() => {
     const response = Storage.instance.get("welcome");
-    if(response) setWelcome(false); 
+    if (response) setWelcome(false);
   }, []);
+
+  const handleClickStart = () => {
+    Storage.instance.post("welcome", "true");
+    console.log("Entre")
+    setWelcome(false);
+  };
 
   return (
     <AppContext.Provider value={initialState}>
-      {welcome && <WelcomeScreen />}
+      {welcome && <WelcomeScreen handleClick={handleClickStart} />}
       {!welcome && <MainScreen />}
     </AppContext.Provider>
   );

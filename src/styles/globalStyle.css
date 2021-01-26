@@ -7,12 +7,14 @@
   --darkBlack-color: #2B2B2B;
   --lightBlack-color: #4A4A4A;
   --gray-color: #888B90;
-  --lightGray-color: #ECECEC;  
+  --lightGray-color: #ECECEC;
+  --white--color: #ffffff;  
 }
 
 @font-face {
   font-family: 'AvenirNext';
   src: url(../fonts/AvenirNext-Regular.otf);
+  font-weight: 400;
 }
 
 @font-face {
@@ -33,7 +35,7 @@
 }
 
 body {
-  font-family: 'AvenirNext';
+  font-family: 'AvenirNext', sans-serif;
 }
 
 .margin-reset {
