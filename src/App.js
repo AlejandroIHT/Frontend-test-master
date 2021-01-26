@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import './styles/globalStyle.css';
 import MainScreen from "./containers/MainScreen";
+import Http from './libs/http';
 
 // You don't have to use `fetch` btw, use whatever you want
 const getCounters = () =>
-  fetch("/api/v1/counter", { method: "get" }).then((res) => res.json());
+  Http.instance.get("/api/v1/counter");
 
 const App = () => {
   useEffect(() => {
