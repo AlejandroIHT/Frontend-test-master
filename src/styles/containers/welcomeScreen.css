@@ -95,21 +95,6 @@
   text-align: center;
 }
 
-.WelcomeScreen__start {
-  font-size: 17px;
-  font-weight: 500;
-  color: var(--white--color);
-  background-color: var(--main-color);
-  padding: 8px 24px;
+.Welcome__container__button {
   margin-bottom: 65px;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-}
-
-.WelcomeScreen__start:hover {
-  color: var(--main-color);
-  background-color: var(--white--color);
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }

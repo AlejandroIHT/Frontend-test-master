@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/containers/welcomeScreen.css";
+import ButtonOrange from "../components/ButtonOrange";
 import rabbit from "../assets/welcome/Rabbit.svg";
 import add from "../assets/welcome/Add.svg";
 import bell from "../assets/welcome/Bell.svg";
@@ -35,9 +36,9 @@ const WelcomeScreen = ({ handleClick }) => {
         Capture cups of lattes, frapuccinos, or anything else that can be
         counted.
       </p>
-      <button className="WelcomeScreen__start" onClick={handleClick}>
-        Get started
-      </button>
+      <div className="Welcome__container__button">
+        <ButtonOrange handleClick={handleClick}>Get started</ButtonOrange>
+      </div>
     </div>
   );
 };

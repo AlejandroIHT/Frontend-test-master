@@ -1,0 +1,64 @@
+@import "../globalStyle.css";
+
+.MainScreen {
+  height: 100vh;
+}
+
+.MainScreen__container {
+  width: 60%;
+  margin: auto;
+}
+
+.MainScreen__container__header {
+  display: flex;
+  justify-content: center;
+  padding: 19px 0;
+}
+
+.MainScreen__container__loader {
+  display: flex;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+}
+
+/*---- Titles ----*/
+.MainScreen__container__titles {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+}
+
+.MainScreen__container__titles--items {
+  font-weight: 500;
+  color: var(--lightBlack-color);
+  margin-right: 7px;
+}
+
+.MainScreen__container__titles--time {
+  color: var(--gray-color);
+  margin-right: 8px;
+}
+
+.MainScreen__container__titles--refreshing {
+  font-weight: 500;
+  color: var(--main-color);
+}
+
+.MainScreen__container__titles--refreshingBtn {
+  background: none;
+  border: none;
+  margin-right: 6.5px;
+  cursor: pointer;
+}
+
+.MainScreen__container__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
