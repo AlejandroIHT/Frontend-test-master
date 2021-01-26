@@ -1,0 +1,41 @@
+:root {
+  /*---- COLORS ----*/
+  --main-color: #FF9500;
+  --main-black-color: #212121;
+  --destructive-color: #FF3B30;
+  --black-color: #000000;
+  --darkBlack-color: #2B2B2B;
+  --lightBlack-color: #4A4A4A;
+  --gray-color: #888B90;
+  --lightGray-color: #ECECEC;  
+}
+
+@font-face {
+  font-family: 'AvenirNext';
+  src: url(../fonts/AvenirNext-Regular.otf);
+}
+
+@font-face {
+  font-family: 'AvenirNext';
+  src: url(../fonts/AvenirNext-Bold.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'AvenirNext';
+  src: url(../fonts/AvenirNext-Demi.otf);
+  font-weight: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'AvenirNext';
+}
+
+.margin-reset {
+  margin: 0;
+}
