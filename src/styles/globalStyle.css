@@ -7,8 +7,9 @@
   --darkBlack-color: #2B2B2B;
   --lightBlack-color: #4A4A4A;
   --gray-color: #888B90;
+  --semi--lightGray-color: #C4C4C4;
   --lightGray-color: #ECECEC;
-  --white--color: #ffffff;  
+  --white--color: #ffffff;
 }
 
 @font-face {

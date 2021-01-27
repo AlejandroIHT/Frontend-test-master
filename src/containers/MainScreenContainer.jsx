@@ -24,7 +24,7 @@ const MainScreenContainer = () => {
     get();
   }, []);
 
-  const handleClickAddCounter = () => setModalAddCounter(true);
+  const handleClickAddCounter = () => setModalAddCounter(!modalAddCounter);
 
   return (
     <MainScreen
@@ -32,6 +32,7 @@ const MainScreenContainer = () => {
       state={state}
       counters={counters}
       refreshingState={refreshingState}
+      modalAddCounter={modalAddCounter}
       handleClickAddCounter={handleClickAddCounter}
     />
   );

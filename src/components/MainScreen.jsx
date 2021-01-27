@@ -5,6 +5,7 @@ import ButtonOrange from "./ButtonOrange";
 import Counter from "./Counter";
 import NoContentScreen from "./NoContentScreen";
 import Loader from "./Loader";
+import ModalCreateCounter from "./ModalCreateCounter";
 import ErrorScreen from "./ErrorScreen";
 import plus from "../assets/mainScreen/plus.svg";
 import refreshing from "../assets/mainScreen/refreshing.svg";
@@ -14,6 +15,7 @@ const MainScreen = ({
   state,
   counters,
   refreshingState,
+  modalAddCounter,
   handleClickAddCounter,
 }) => {
   return (
@@ -80,6 +82,12 @@ const MainScreen = ({
           <img src={plus} alt="add" />
         </ButtonOrange>
       </footer>
+      {modalAddCounter && (
+        <ModalCreateCounter
+          isOpen={modalAddCounter}
+          handleClickClouse={handleClickAddCounter}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,76 @@
+@import "../globalStyle.css";
+
+.ModalCreateCounter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 16px;
+  border-bottom: 3px solid rgba(196, 196, 196, 0.15);
+}
+
+.ModalCreateCounter__header__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.ModalCreateCounter__header--clouseBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--semi--lightGray-color);
+  padding: 8px;
+  margin-right: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.ModalCreateCounter__header--title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000;
+}
+
+/*---- BODY ----*/
+.ModalCreateCounter__body {
+  padding: 21px 16px;
+}
+
+.ModalCreateCounter__body__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ModalCreateCounter__body__container--label {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+
+.ModalCreateCounter__body__container--input {
+  height: 44px;
+  font-size: 17px;
+  color: var(--black-color);
+  background-color: var(--white--color);
+  padding: 0 14px;
+  margin-bottom: 9px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ModalCreateCounter__body__container--textHelp {
+  font-size: 15px;
+  color:var(--gray-color);
+}
+
+.ModalCreateCounter__body__container--textHelp button {
+  color: var(--lightBlack-color);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
