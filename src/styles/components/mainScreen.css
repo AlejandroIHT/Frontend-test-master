@@ -9,12 +9,14 @@
   margin: auto;
 }
 
+/*---- CONTAINER HEADER ----*/
 .MainScreen__container__header {
   display: flex;
   justify-content: center;
   padding: 19px 0;
 }
 
+/*---- CONTAINER LOADER ----*/
 .MainScreen__container__loader {
   display: flex;
   height: 70vh;
@@ -22,11 +24,12 @@
   align-items: center;
 }
 
-/*---- Titles ----*/
+/*---- TITLES ----*/
 .MainScreen__container__titles {
   display: flex;
   align-items: center;
   font-size: 17px;
+  padding: 0 24px;
 }
 
 .MainScreen__container__titles--items {
@@ -38,6 +41,10 @@
 .MainScreen__container__titles--time {
   color: var(--gray-color);
   margin-right: 8px;
+}
+
+.MainScreen__container__list {
+  padding-bottom: 144px;
 }
 
 .MainScreen__container__titles--refreshing {
@@ -52,12 +59,32 @@
   cursor: pointer;
 }
 
+/*---- NO CONTENT SCREEN ----*/
+.MainScreen__container__noContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 105px;
+}
+
+/*---- ERROR SCREEN ----*/
+.MainScreen__container__error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 105px;
+}
+
+/*---- FOOTER ----*/
 .MainScreen__container__footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 72px;
+  background-color: var(--white--color);
   position: fixed;
   bottom: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);

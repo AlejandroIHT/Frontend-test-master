@@ -1,0 +1,14 @@
+@import '../globalStyle.css';
+
+.NoContentScreen--title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.NoContentScreen--body {
+  font-size: 17px;
+  color: #4a4a4a;
+  text-align: center;
+}

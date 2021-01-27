@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles/globalStyle.css";
 import useInitialState from "./hooks/useInitialState";
 import AppContext from "./context/AppContext";
-import MainScreen from "./containers/MainScreen";
+import MainScreenContainer from "./containers/MainScreenContainer";
 import WelcomeScreen from "./containers/WelcomeScreen";
 import Storage from "./libs/storage";
 
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <AppContext.Provider value={initialState}>
       {welcome && <WelcomeScreen handleClick={handleClickStart} />}
-      {!welcome && <MainScreen />}
+      {!welcome && <MainScreenContainer />}
     </AppContext.Provider>
   );
 };

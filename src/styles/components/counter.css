@@ -1,0 +1,40 @@
+@import "../globalStyle.css";
+
+.Counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  padding: 23px 24px;
+}
+
+.Counter__title {
+  font-size: 17px;
+  color: var(--main-black-color);
+  padding-right: 28px;
+}
+
+.Counter__container__count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Counter__container__count--button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Counter__container__count--button.disable {
+  cursor: initial;
+}
+
+.Coutner__container__count--number {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0 18px;
+}
