@@ -11,8 +11,16 @@ const useInitialState = () => {
     });
   };
 
+  const addCounters = (payload) => {
+    setState({
+      ...state,
+      counters: [...state.counters, payload],
+    });
+  };
+
   return {
     getCounters,
+    addCounters,
     state,
   };
 };

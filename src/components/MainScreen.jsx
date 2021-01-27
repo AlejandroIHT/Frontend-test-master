@@ -16,6 +16,7 @@ const MainScreen = ({
   counters,
   refreshingState,
   modalAddCounter,
+  times,
   handleClickAddCounter,
 }) => {
   return (
@@ -51,10 +52,10 @@ const MainScreen = ({
               <>
                 <div className="MainScreen__container__titles">
                   <p className="MainScreen__container__titles--items">
-                    4 items
+                    {`${counters.length} items`}
                   </p>
                   <p className="MainScreen__container__titles--time">
-                    17 times
+                  {`${times()} times`}
                   </p>
                   <button
                     className="MainScreen__container__titles--refreshingBtn"
@@ -69,7 +70,7 @@ const MainScreen = ({
                   )}
                 </div>
                 <div className="MainScreen__container__list">
-                  <Counter title="Cups of coffee" cuantity="5" />
+                  {counters.map(item => <Counter key={item.id} title={item.title} cuantity={item.count} />) }
                 </div>
               </>
             )}

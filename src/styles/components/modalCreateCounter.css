@@ -62,9 +62,15 @@
   box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
+.ModalCreateCounter__body__container--input:active,
+.ModalCreateCounter__body__container--input:focus {
+  outline: none;
+  border: 2px solid var(--main-color);
+}
+
 .ModalCreateCounter__body__container--textHelp {
   font-size: 15px;
-  color:var(--gray-color);
+  color: var(--gray-color);
 }
 
 .ModalCreateCounter__body__container--textHelp button {
@@ -73,4 +79,9 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.ModalCreateCounter__body__container--loader {
+  text-align: center;
+  padding-top: 80px;
 }

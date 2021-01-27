@@ -11,7 +11,8 @@ const MainScreenContainer = () => {
   const [modalAddCounter, setModalAddCounter] = useState(false);
   const { state, getCounters } = useContext(AppContext);
   const { counters } = state;
-  //Take data base
+
+  /*---- Take data base ----*/
   const get = async () => {
     setLoading(true);
     const data = await Http.instance.get(API);
@@ -24,7 +25,18 @@ const MainScreenContainer = () => {
     get();
   }, []);
 
+  /*---- Open modal ----*/
   const handleClickAddCounter = () => setModalAddCounter(!modalAddCounter);
+
+
+  /*---- Times Amount ----*/
+  const times = () => {
+    let timesAmount = 0;
+    counters.forEach((item) => {
+      timesAmount += item.count;
+    });
+    return timesAmount;
+  };
 
   return (
     <MainScreen
@@ -33,6 +45,7 @@ const MainScreenContainer = () => {
       counters={counters}
       refreshingState={refreshingState}
       modalAddCounter={modalAddCounter}
+      times={times}
       handleClickAddCounter={handleClickAddCounter}
     />
   );
