@@ -6,6 +6,7 @@ import Counter from "./Counter";
 import NoContentScreen from "./NoContentScreen";
 import Loader from "./Loader";
 import ModalCreateCounterContainer from "../containers/ModalCreateCounterContainer";
+import ModalNoMinus from "./ModalNoMinus";
 import ErrorScreen from "./ErrorScreen";
 import plus from "../assets/mainScreen/plus.svg";
 import refreshing from "../assets/mainScreen/refreshing.svg";
@@ -17,10 +18,12 @@ const MainScreen = ({
   search,
   refreshingState,
   modalAddCounter,
+  modalNoMinus,
   setModalAddCounter,
   times,
   handleClickAddCounter,
-  handleChangeSearch
+  handleChangeSearch,
+  handleClickNoMinusCounter
 }) => {
   return (
     <div className="MainScreen">
@@ -53,17 +56,19 @@ const MainScreen = ({
             )}
             {search.length === 0 && counters.length !== 0 && !loading && (
               <div className="MainScreen__container__noResults">
-                <h2 className="MainScreen__container__noResults--title">No results</h2>
+                <h2 className="MainScreen__container__noResults--title">
+                  No results
+                </h2>
               </div>
             )}
-            {(counters.length !== 0 && !loading && search.length !== 0) && (
+            {counters.length !== 0 && !loading && search.length !== 0 && (
               <>
                 <div className="MainScreen__container__titles">
                   <p className="MainScreen__container__titles--items">
                     {`${search.length} items`}
                   </p>
                   <p className="MainScreen__container__titles--time">
-                  {`${times()} times`}
+                    {`${times()} times`}
                   </p>
                   <button
                     className="MainScreen__container__titles--refreshingBtn"
@@ -78,7 +83,14 @@ const MainScreen = ({
                   )}
                 </div>
                 <div className="MainScreen__container__list">
-                  {search.map(item => <Counter key={item.id} title={item.title} cuantity={item.count} />) }
+                  {search.map((item) => (
+                    <Counter
+                      key={item.id}
+                      title={item.title}
+                      cuantity={item.count}
+                      handleClickNoMinusCounter={handleClickNoMinusCounter}
+                    />
+                  ))}
                 </div>
               </>
             )}
@@ -96,6 +108,13 @@ const MainScreen = ({
           isOpen={modalAddCounter}
           setModalAddCounter={setModalAddCounter}
           handleClickClouse={handleClickAddCounter}
+        />
+      )}
+      {modalNoMinus && (
+        <ModalNoMinus
+          isOpen={modalNoMinus}
+          setModalAddCounter={setModalAddCounter}
+          handleClickClouse={handleClickNoMinusCounter}
         />
       )}
     </div>

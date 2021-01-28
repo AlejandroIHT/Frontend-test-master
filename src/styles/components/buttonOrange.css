@@ -15,6 +15,15 @@
   cursor: pointer;
 }
 
+.ButtonOrange.disable{
+  opacity: 0.5;
+  cursor: initial;
+}
+
 .margin-right {
   margin-right: 20%;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
 }

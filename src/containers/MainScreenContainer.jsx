@@ -9,6 +9,7 @@ const MainScreenContainer = () => {
   const [loading, setLoading] = useState(false);
   const [refreshingState, setRefreshingState] = useState(false);
   const [modalAddCounter, setModalAddCounter] = useState(false);
+  const [modalNoMinus, setModalNoMinus] = useState(false);
   const { state, getCounters } = useContext(AppContext);
   const { counters } = state;
   const [search, setSearch] = useState([]);
@@ -44,6 +45,9 @@ const MainScreenContainer = () => {
     setSearch(filterSearch);
   };
 
+  /*---- No Minus Counter ----*/
+  const handleClickNoMinusCounter = () => setModalNoMinus(!modalNoMinus);
+
   /*---- Times Amount ----*/
   const times = () => {
     let timesAmount = 0;
@@ -61,10 +65,12 @@ const MainScreenContainer = () => {
       search={search}
       refreshingState={refreshingState}
       modalAddCounter={modalAddCounter}
+      modalNoMinus={modalNoMinus}
       setModalAddCounter={setModalAddCounter}
       times={times}
       handleClickAddCounter={handleClickAddCounter}
       handleChangeSearch={handleChangeSearch}
+      handleClickNoMinusCounter={handleClickNoMinusCounter}
     />
   );
 };

@@ -1,6 +1,6 @@
 @import "../globalStyle.css";
 
-.ModalErrorCreateCounter__body__container {
+.ModalNoMinus__body__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,16 +9,21 @@
   text-align: center;
 }
 
-.ModalErrorCreateCounter__body__container--title {
+.ModalNoMinus__body__container--title {
   font-size: 22px;
   font-weight: 500;
   color: var(--black-color);
   margin-bottom: 6px;
 }
 
-.ModalErrorCreateCounter__body__container--body {
+.ModalNoMinus__body__container--body {
   font-size: 17px;
   color: var(--lightBlack-color);
   margin-bottom: 21px;
   text-align: center;
+}
+
+.ModalNoMinus__body__container--btns {
+  display: flex;
+  justify-content: center;
 }

@@ -8,6 +8,7 @@ const Counter = ({
   title,
   cuantity,
   minusDisable,
+  handleClickNoMinusCounter,
   handleClickMinus,
   handleClickPLus,
 }) => {
@@ -21,15 +22,15 @@ const Counter = ({
               ? "Counter__container__count--button disable"
               : "Counter__container__count--button"
           }
-          onClick={handleClickMinus}
+          onClick={cuantity === 0 ? handleClickNoMinusCounter : handleClickMinus}
           type="button"
         >
           <img
-            src={minusDisable ? minusDisableIcon : minusOrangeIcon}
+            src={cuantity === 0 ? minusDisableIcon : minusOrangeIcon}
             alt="minus"
           />
         </button>
-        <p className="Coutner__container__count--number">{cuantity}</p>
+        <p className={`Coutner__container__count--number ${cuantity === 0 && "disable"}`}>{cuantity}</p>
         <button
           className="Counter__container__count--button"
           onClick={handleClickPLus}

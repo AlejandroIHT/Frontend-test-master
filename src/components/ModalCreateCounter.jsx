@@ -15,7 +15,7 @@ const ModalCreateCounter = ({
   handleClickClouse,
   handleClickSendNewCounter,
   handleChangeNewCounter,
-  handleClickClouseModalInModal
+  handleClickClouseModalInModal,
 }) => {
   return (
     <Modal isOpen={isOpen}>
@@ -29,7 +29,10 @@ const ModalCreateCounter = ({
           </button>
           <h1 className="ModalCreateCounter__header--title">Create counter</h1>
         </div>
-        <ButtonOrange handleClick={handleClickSendNewCounter}>
+        <ButtonOrange
+          handleClick={handleClickSendNewCounter}
+          disable={(counter.title.length === 0 || loading) ? true.toString() : null}
+        >
           Save
         </ButtonOrange>
       </div>
