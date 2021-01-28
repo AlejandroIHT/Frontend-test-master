@@ -23,6 +23,7 @@ const MainScreen = ({
   times,
   handleClickAddCounter,
   handleChangeSearch,
+  handleClickMinus,
   handleClickNoMinusCounter
 }) => {
   return (
@@ -86,8 +87,11 @@ const MainScreen = ({
                   {search.map((item) => (
                     <Counter
                       key={item.id}
+                      id={item.id}
                       title={item.title}
                       cuantity={item.count}
+                      modalNoMinus={modalNoMinus}
+                      handleClickMinus={handleClickMinus}
                       handleClickNoMinusCounter={handleClickNoMinusCounter}
                     />
                   ))}
@@ -108,13 +112,6 @@ const MainScreen = ({
           isOpen={modalAddCounter}
           setModalAddCounter={setModalAddCounter}
           handleClickClouse={handleClickAddCounter}
-        />
-      )}
-      {modalNoMinus && (
-        <ModalNoMinus
-          isOpen={modalNoMinus}
-          setModalAddCounter={setModalAddCounter}
-          handleClickClouse={handleClickNoMinusCounter}
         />
       )}
     </div>
