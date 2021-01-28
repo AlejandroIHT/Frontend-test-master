@@ -27,6 +27,11 @@ const MainScreenContainer = () => {
     get();
   }, []);
 
+  /*---- Update search ----*/
+  useEffect(() => {
+    setSearch(counters);
+  }, [counters]);
+
   /*---- Open modal ----*/
   const handleClickAddCounter = () => setModalAddCounter(!modalAddCounter);
 

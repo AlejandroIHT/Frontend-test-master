@@ -51,7 +51,7 @@ const MainScreen = ({
                 />
               </div>
             )}
-            {search.length === 0 && !loading && (
+            {search.length === 0 && counters.length !== 0 && !loading && (
               <div className="MainScreen__container__noResults">
                 <h2 className="MainScreen__container__noResults--title">No results</h2>
               </div>
