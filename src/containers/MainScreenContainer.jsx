@@ -11,6 +11,7 @@ const MainScreenContainer = () => {
   const [modalAddCounter, setModalAddCounter] = useState(false);
   const { state, getCounters } = useContext(AppContext);
   const { counters } = state;
+  const [search, setSearch] = useState([]);
 
   /*---- Take data base ----*/
   const get = async () => {
@@ -18,6 +19,7 @@ const MainScreenContainer = () => {
     const data = await Http.instance.get(API);
     //Add global state
     getCounters(data);
+    setSearch(data);
     setLoading(false);
   };
 
@@ -28,11 +30,19 @@ const MainScreenContainer = () => {
   /*---- Open modal ----*/
   const handleClickAddCounter = () => setModalAddCounter(!modalAddCounter);
 
+  /*---- Search ----*/
+  const handleChangeSearch = (e) => {
+    const filterSearch = counters.filter((item) =>
+      item.title.toUpperCase().includes(e.target.value.toUpperCase())
+    );
+
+    setSearch(filterSearch);
+  };
 
   /*---- Times Amount ----*/
   const times = () => {
     let timesAmount = 0;
-    counters.forEach((item) => {
+    search.forEach((item) => {
       timesAmount += item.count;
     });
     return timesAmount;
@@ -43,10 +53,13 @@ const MainScreenContainer = () => {
       loading={loading}
       state={state}
       counters={counters}
+      search={search}
       refreshingState={refreshingState}
       modalAddCounter={modalAddCounter}
+      setModalAddCounter={setModalAddCounter}
       times={times}
       handleClickAddCounter={handleClickAddCounter}
+      handleChangeSearch={handleChangeSearch}
     />
   );
 };

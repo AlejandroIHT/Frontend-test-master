@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/containers/welcomeScreen.css";
-import ButtonOrange from "../components/ButtonOrange";
+import ButtonOrange from "./ButtonOrange";
 import rabbit from "../assets/welcome/Rabbit.svg";
 import add from "../assets/welcome/Add.svg";
 import bell from "../assets/welcome/Bell.svg";

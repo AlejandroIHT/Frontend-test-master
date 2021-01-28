@@ -77,6 +77,19 @@
   margin-top: 105px;
 }
 
+/*---- NO RESULTS ----*/
+.MainScreen__container__noResults {
+  display: flex;
+  justify-content: center;
+  padding-top: 180px;
+}
+
+.MainScreen__container__noResults--title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gray-color);
+}
+
 /*---- FOOTER ----*/
 .MainScreen__container__footer {
   display: flex;

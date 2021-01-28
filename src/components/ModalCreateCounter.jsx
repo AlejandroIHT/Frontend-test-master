@@ -1,48 +1,22 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import "../styles/components/modalCreateCounter.css";
-import AppContext from "../context/AppContext";
 import Modal from "./Modal";
 import ModalErrorCreateCounter from "./ModalErrorCreateCounter";
 import Loader from "./Loader";
 import ButtonOrange from "./ButtonOrange";
 import clouseIcon from "../assets/modal/clouse.svg";
-import Http from "../libs/http";
 
-const API = "/api/v1/counter";
-
-const ModalCreateCounter = ({ isOpen, handleClickClouse }) => {
-  const [counter, setCounter] = useState({ title: "" });
-  const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState(false);
-  const [error, setError] = useState(null);
-  const { addCounters } = useContext(AppContext);
-
-  /*---- Change state title of the new counter ----*/
-  const handleChangeNewCounter = (e) => setCounter({ title: e.target.value });
-
-  /*---- Create new counter ----*/
-  const handleClickSendNewCounter = async () => {
-    if (counter.title.length !== 0) {
-      setLoading(true);
-      try {
-        const data = await Http.instance.post(API, JSON.stringify(counter));
-
-        if (data.message) throw Error(data.message);
-
-        addCounters(data);
-        setCounter({ title: "" });
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        setError(error);
-        setModal(true);
-      }
-    }
-  };
-
-  /*---- Clouse Modal in Modal ----*/
-  const handleClickClouseModalInModal = () => setModal(!modal);
-
+const ModalCreateCounter = ({
+  isOpen,
+  counter,
+  loading,
+  error,
+  modal,
+  handleClickClouse,
+  handleClickSendNewCounter,
+  handleChangeNewCounter,
+  handleClickClouseModalInModal
+}) => {
   return (
     <Modal isOpen={isOpen}>
       <div className="ModalCreateCounter__header">
