@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/components/counter.css";
-import ModalNoMinus from "./ModalNoMinus";
 import plusOrangeIcon from "../assets/counter/plusOrange.svg";
 import minusOrangeIcon from "../assets/counter/minusOrange.svg";
 import minusDisableIcon from "../assets/counter/minusDisable.svg";
@@ -10,10 +9,8 @@ const Counter = ({
   title,
   cuantity,
   minusDisable,
-  modalNoMinus,
   handleClickMinus,
-  handleClickPLus,
-  handleClickNoMinusCounter,
+  handleClickIncrement,
 }) => {
   return (
     <>
@@ -43,22 +40,13 @@ const Counter = ({
           </p>
           <button
             className="Counter__container__count--button"
-            onClick={handleClickPLus}
+            onClick={() => handleClickIncrement(id)}
             type="button"
           >
             <img src={plusOrangeIcon} alt="plus" />
           </button>
         </div>
       </div>
-      {modalNoMinus && (
-        <ModalNoMinus
-          isOpen={modalNoMinus}
-          idCounter={id}
-          title={title}
-          handleClickClouse={handleClickNoMinusCounter}
-          handleClickMinus={handleClickMinus}
-        />
-      )}
     </>
   );
 };

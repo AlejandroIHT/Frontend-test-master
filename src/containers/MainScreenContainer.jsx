@@ -5,38 +5,80 @@ import MainScreen from "../components/MainScreen";
 
 const API_GET = "/api/v1/counter";
 const API_DECREMENT = "/api/v1/counter/dec";
+const API_INCREMENT = "/api/v1/counter/inc";
 
 const MainScreenContainer = () => {
   const [loading, setLoading] = useState(false);
+  const [loadingCounter, setLoadingCounter] = useState(false);
   const [refreshingState, setRefreshingState] = useState(false);
   const [modalAddCounter, setModalAddCounter] = useState(false);
-  const [modalNoMinus, setModalNoMinus] = useState(false);
+  const [modalNoMinus, setModalNoMinus] = useState({
+    id: "",
+    title: "",
+    modal: false,
+  });
   const { state, getCounters } = useContext(AppContext);
   const { counters } = state;
   const [search, setSearch] = useState([]);
 
   /*---- Take data base ----*/
   const get = async () => {
+    if (refreshingState) {
+      const data = await Http.instance.get(API_GET);
+      //Add global state
+      getCounters(data);
+      setSearch(data);
+      setRefreshingState(false);
+      return;
+    }
+
     setLoading(true);
     const data = await Http.instance.get(API_GET);
     //Add global state
     getCounters(data);
     setSearch(data);
     setLoading(false);
+    setRefreshingState(false);
   };
 
   /*---- Decrement counter ----*/
   const postDecrement = async (body) => {
-    setLoading(true);
+    setLoadingCounter(true);
     const data = await Http.instance.post(API_DECREMENT, JSON.stringify(body));
     const upDateCounters = counters.map((item) => {
       if (item.id === data.id) item.count = data.count;
-      return;
+      return item;
     });
+
     //Add global state
     getCounters(upDateCounters);
-    setSearch(upDateCounters);
-    setLoading(false);
+
+    //Update search
+    const searchData = search.filter((itemSearch) =>
+      upDateCounters.filter((item) => item.id === itemSearch.id)
+    );
+    setSearch(searchData);
+    setLoadingCounter(false);
+  };
+
+  /*---- Increment counter ----*/
+  const postIncrement = async (body) => {
+    setLoadingCounter(true);
+    const data = await Http.instance.post(API_INCREMENT, JSON.stringify(body));
+    const upDateCounters = counters.map((item) => {
+      if (item.id === data.id) item.count = data.count;
+      return item;
+    });
+
+    //Add global state
+    getCounters(upDateCounters);
+
+    //Update search
+    const searchData = search.filter((itemSearch) =>
+      upDateCounters.filter((item) => item.id === itemSearch.id)
+    );
+    setSearch(searchData);
+    setLoadingCounter(false);
   };
 
   useEffect(() => {
@@ -45,8 +87,17 @@ const MainScreenContainer = () => {
 
   /*---- Update search ----*/
   useEffect(() => {
-    setSearch(counters);
+    if (!loadingCounter) setSearch(counters);
   }, [counters]);
+
+  /*---- Refreshing ----*/
+  useEffect(() => {
+    if (refreshingState) get();
+  }, [refreshingState]);
+
+  const handleClickRefreshing = () => {
+    setRefreshingState(true);
+  };
 
   /*---- Open modal ----*/
   const handleClickAddCounter = () => setModalAddCounter(!modalAddCounter);
@@ -64,14 +115,24 @@ const MainScreenContainer = () => {
   const handleClickMinus = (e) => {
     const counter = counters.filter((item) => item.id === e);
     if (counter[0].count === 0) {
-      setModalNoMinus(!modalNoMinus);
+      setModalNoMinus({
+        id: counter[0].id,
+        title: counter[0].title,
+        modal: !modalNoMinus.modal,
+      });
       return;
     }
 
     postDecrement({ id: counter[0].id });
   };
 
-  const handleClickNoMinusCounter = () => setModalNoMinus(!modalNoMinus);
+  const handleClickIncrement = (e) => {
+    const counter = counters.filter((item) => item.id === e);
+    postIncrement({ id: counter[0].id });
+  };
+
+  const handleClickNoMinusCounter = () =>
+    setModalNoMinus({ ...modalNoMinus, modal: !modalNoMinus.modal });
 
   /*---- Times Amount ----*/
   const times = () => {
@@ -96,7 +157,9 @@ const MainScreenContainer = () => {
       handleClickAddCounter={handleClickAddCounter}
       handleChangeSearch={handleChangeSearch}
       handleClickMinus={handleClickMinus}
+      handleClickIncrement={handleClickIncrement}
       handleClickNoMinusCounter={handleClickNoMinusCounter}
+      handleClickRefreshing={handleClickRefreshing}
     />
   );
 };

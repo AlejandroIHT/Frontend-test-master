@@ -10,6 +10,7 @@ import ModalNoMinus from "./ModalNoMinus";
 import ErrorScreen from "./ErrorScreen";
 import plus from "../assets/mainScreen/plus.svg";
 import refreshing from "../assets/mainScreen/refreshing.svg";
+import refreshingActive from "../assets/mainScreen/refreshingActive.svg";
 
 const MainScreen = ({
   loading,
@@ -24,7 +25,9 @@ const MainScreen = ({
   handleClickAddCounter,
   handleChangeSearch,
   handleClickMinus,
-  handleClickNoMinusCounter
+  handleClickIncrement,
+  handleClickNoMinusCounter,
+  handleClickRefreshing,
 }) => {
   return (
     <div className="MainScreen">
@@ -72,10 +75,15 @@ const MainScreen = ({
                     {`${times()} times`}
                   </p>
                   <button
+                    onClick={handleClickRefreshing}
                     className="MainScreen__container__titles--refreshingBtn"
                     type="button"
                   >
-                    <img src={refreshing} alt="refreshing icon" />
+                    {refreshingState ? (
+                      <img src={refreshingActive} alt="refreshing icon" />
+                    ) : (
+                      <img src={refreshing} alt="refreshing icon" />
+                    )}
                   </button>
                   {refreshingState && (
                     <p className="MainScreen__container__titles--refreshing">
@@ -90,9 +98,8 @@ const MainScreen = ({
                       id={item.id}
                       title={item.title}
                       cuantity={item.count}
-                      modalNoMinus={modalNoMinus}
                       handleClickMinus={handleClickMinus}
-                      handleClickNoMinusCounter={handleClickNoMinusCounter}
+                      handleClickIncrement={handleClickIncrement}
                     />
                   ))}
                 </div>
@@ -112,6 +119,14 @@ const MainScreen = ({
           isOpen={modalAddCounter}
           setModalAddCounter={setModalAddCounter}
           handleClickClouse={handleClickAddCounter}
+        />
+      )}
+      {modalNoMinus.modal && (
+        <ModalNoMinus
+          isOpen={modalNoMinus.modal}
+          data={modalNoMinus}
+          handleClickClouse={handleClickNoMinusCounter}
+          handleClickMinus={handleClickMinus}
         />
       )}
     </div>
