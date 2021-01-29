@@ -13,6 +13,7 @@ import refreshing from "../assets/mainScreen/refreshing.svg";
 import refreshingActive from "../assets/mainScreen/refreshingActive.svg";
 
 const MainScreen = ({
+  errorGet,
   loading,
   state,
   counters,
@@ -28,6 +29,7 @@ const MainScreen = ({
   handleClickIncrement,
   handleClickNoMinusCounter,
   handleClickRefreshing,
+  handleClickRetryGet
 }) => {
   return (
     <div className="MainScreen">
@@ -41,7 +43,17 @@ const MainScreen = ({
           </div>
         ) : (
           <>
-            {counters.length === 0 && !loading && (
+            {errorGet && (
+              <div className="MainScreen__container__noContent">
+                <NoContentScreen
+                  error
+                  handleClick={handleClickRetryGet}
+                  title="Couldn’t load the counters"
+                  body="The Internet connection appears to be offline."
+                />
+              </div>
+            )}
+            {counters.length === 0 && !loading && !errorGet && (
               <div className="MainScreen__container__noContent">
                 <NoContentScreen
                   title="No counters yet"
@@ -50,7 +62,7 @@ const MainScreen = ({
                 />
               </div>
             )}
-            {state.error && !loading && (
+            {state.error && !loading && !errorGet && (
               <div className="MainScreen__container__error">
                 <ErrorScreen
                   title="Couldn’t load the counters"
@@ -58,53 +70,59 @@ const MainScreen = ({
                 />
               </div>
             )}
-            {search.length === 0 && counters.length !== 0 && !loading && (
-              <div className="MainScreen__container__noResults">
-                <h2 className="MainScreen__container__noResults--title">
-                  No results
-                </h2>
-              </div>
-            )}
-            {counters.length !== 0 && !loading && search.length !== 0 && (
-              <>
-                <div className="MainScreen__container__titles">
-                  <p className="MainScreen__container__titles--items">
-                    {`${search.length} items`}
-                  </p>
-                  <p className="MainScreen__container__titles--time">
-                    {`${times()} times`}
-                  </p>
-                  <button
-                    onClick={handleClickRefreshing}
-                    className="MainScreen__container__titles--refreshingBtn"
-                    type="button"
-                  >
-                    {refreshingState ? (
-                      <img src={refreshingActive} alt="refreshing icon" />
-                    ) : (
-                      <img src={refreshing} alt="refreshing icon" />
-                    )}
-                  </button>
-                  {refreshingState && (
-                    <p className="MainScreen__container__titles--refreshing">
-                      Refreshing...
+            {search.length === 0 &&
+              counters.length !== 0 &&
+              !loading &&
+              !errorGet && (
+                <div className="MainScreen__container__noResults">
+                  <h2 className="MainScreen__container__noResults--title">
+                    No results
+                  </h2>
+                </div>
+              )}
+            {counters.length !== 0 &&
+              !loading &&
+              search.length !== 0 &&
+              !errorGet && (
+                <>
+                  <div className="MainScreen__container__titles">
+                    <p className="MainScreen__container__titles--items">
+                      {`${search.length} items`}
                     </p>
-                  )}
-                </div>
-                <div className="MainScreen__container__list">
-                  {search.map((item) => (
-                    <Counter
-                      key={item.id}
-                      id={item.id}
-                      title={item.title}
-                      cuantity={item.count}
-                      handleClickMinus={handleClickMinus}
-                      handleClickIncrement={handleClickIncrement}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
+                    <p className="MainScreen__container__titles--time">
+                      {`${times()} times`}
+                    </p>
+                    <button
+                      onClick={handleClickRefreshing}
+                      className="MainScreen__container__titles--refreshingBtn"
+                      type="button"
+                    >
+                      {refreshingState ? (
+                        <img src={refreshingActive} alt="refreshing icon" />
+                      ) : (
+                        <img src={refreshing} alt="refreshing icon" />
+                      )}
+                    </button>
+                    {refreshingState && (
+                      <p className="MainScreen__container__titles--refreshing">
+                        Refreshing...
+                      </p>
+                    )}
+                  </div>
+                  <div className="MainScreen__container__list">
+                    {search.map((item) => (
+                      <Counter
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        cuantity={item.count}
+                        handleClickMinus={handleClickMinus}
+                        handleClickIncrement={handleClickIncrement}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
           </>
         )}
       </div>

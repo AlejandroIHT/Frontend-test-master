@@ -9,6 +9,7 @@ const API_INCREMENT = "/api/v1/counter/inc";
 
 const MainScreenContainer = () => {
   const [loading, setLoading] = useState(false);
+  const [errorGet, setErrorGet] = useState(null);
   const [loadingCounter, setLoadingCounter] = useState(false);
   const [refreshingState, setRefreshingState] = useState(false);
   const [modalAddCounter, setModalAddCounter] = useState(false);
@@ -24,21 +25,37 @@ const MainScreenContainer = () => {
   /*---- Take data base ----*/
   const get = async () => {
     if (refreshingState) {
-      const data = await Http.instance.get(API_GET);
-      //Add global state
-      getCounters(data);
-      setSearch(data);
-      setRefreshingState(false);
+      try {
+        const data = await Http.instance.get(API_GET);
+        if (data.message) throw Error(error);
+
+        //Add global state
+        getCounters(data);
+        setSearch(data);
+        setRefreshingState(false);
+      } catch (error) {
+        setErrorGet(error);
+        setRefreshingState(false);
+      }
+
       return;
     }
 
     setLoading(true);
-    const data = await Http.instance.get(API_GET);
-    //Add global state
-    getCounters(data);
-    setSearch(data);
-    setLoading(false);
-    setRefreshingState(false);
+    try {
+      const data = await Http.instance.get(API_GET);
+      if (data.message) throw Error(error);
+
+      //Add global state
+      getCounters(data);
+      setSearch(data);
+      setLoading(false);
+      setRefreshingState(false);
+    } catch (error) {
+      setErrorGet(error);
+      setLoading(false);
+      setRefreshingState(false);
+    }
   };
 
   /*---- Decrement counter ----*/
@@ -84,6 +101,9 @@ const MainScreenContainer = () => {
   useEffect(() => {
     get();
   }, []);
+
+  /*---- Retry get ----*/
+  const handleClickRetryGet = () => get();
 
   /*---- Update search ----*/
   useEffect(() => {
@@ -145,6 +165,7 @@ const MainScreenContainer = () => {
 
   return (
     <MainScreen
+      errorGet={errorGet}
       loading={loading}
       state={state}
       counters={counters}
@@ -160,6 +181,7 @@ const MainScreenContainer = () => {
       handleClickIncrement={handleClickIncrement}
       handleClickNoMinusCounter={handleClickNoMinusCounter}
       handleClickRefreshing={handleClickRefreshing}
+      handleClickRetryGet={handleClickRetryGet}
     />
   );
 };
