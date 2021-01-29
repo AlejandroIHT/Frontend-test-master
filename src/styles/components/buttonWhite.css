@@ -14,3 +14,11 @@
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
+
+.ButtonWhite.alert {
+  color: var(--destructive-color);
+}
+
+.margin-right-18 {
+  margin-right: 18px;
+}

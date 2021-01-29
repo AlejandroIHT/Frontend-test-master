@@ -9,13 +9,21 @@ const Counter = ({
   title,
   cuantity,
   minusDisable,
+  selected,
   handleClickMinus,
   handleClickIncrement,
+  handleClickSelectCounter,
 }) => {
   return (
     <>
-      <div className="Counter">
-        <p className="Counter__title">{title}</p>
+      <div className={`Counter ${selected === id ? "active" : ""}`}>
+        <button
+          className="Counter__button__title"
+          type="button"
+          onClick={() => handleClickSelectCounter(id)}
+        >
+          <p className="Counter__button__title--title">{title}</p>
+        </button>
         <div className="Counter__container__count">
           <button
             className={

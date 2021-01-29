@@ -4,10 +4,27 @@
   display: flex;
   justify-content: space-between;
   align-items: self-start;
-  padding: 23px 24px;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 6px;
 }
 
-.Counter__title {
+.Counter.active {
+  background-color: rgb(255, 149, 0, .2);
+}
+
+.Counter__button__title {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Counter__button__title:focus,
+.Counter__button__title:active {
+  outline: none;
+}
+
+.Counter__button__title--title {
   font-size: 17px;
   color: var(--main-black-color);
   padding-right: 28px;

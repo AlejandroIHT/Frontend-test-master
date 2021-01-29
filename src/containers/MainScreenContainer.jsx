@@ -12,6 +12,12 @@ const MainScreenContainer = () => {
   const [errorGet, setErrorGet] = useState(null);
   const [loadingCounter, setLoadingCounter] = useState(false);
   const [refreshingState, setRefreshingState] = useState(false);
+  const [selectedACounter, setSelectedACounter] = useState("");
+  const [modalDeleteCounter, setModalDeleteCounter] = useState({
+    counter: {},
+    modal: false,
+  });
+  const [errorDelete, setErrorDelete] = useState(false);
   const [modalAddCounter, setModalAddCounter] = useState(false);
   const [modalNoMinus, setModalNoMinus] = useState({
     id: "",
@@ -59,6 +65,44 @@ const MainScreenContainer = () => {
     }
   };
 
+  /*---- Delete counter ----*/
+  const handleClickDeleteModal = () => {
+    if (modalDeleteCounter.modal) {
+      setModalDeleteCounter({ counter: {}, modal: false });
+      return;
+    }
+    const counter = counters.filter((item) => item.id === selectedACounter);
+    setModalDeleteCounter({ counter: counter[0], modal: true });
+  };
+
+  const handleClickClouseErrorDeleteModal = () => setErrorDelete(false);
+
+  const handleClickDeleteCounter = async () => {
+    try {
+      const data = await Http.instance.delete(
+        API_GET,
+        JSON.stringify({ id: selectedACounter })
+      );
+      if (data.message) throw Error(error);
+
+      const upDateCounters = counters.filter((item) => item.id !== data);
+      //Add global state
+      getCounters(upDateCounters);
+
+      //Update search
+      const searchData = search.filter((itemSearch) =>
+        upDateCounters.filter((item) => item.id === itemSearch.id)
+      );
+      setSearch(searchData);
+      setModalDeleteCounter({ counter: {}, modal: false });
+      setSelectedACounter("")
+      setErrorDelete(false);
+    } catch (error) {
+      setModalDeleteCounter({ ...modalDeleteCounter, modal: false });
+      setErrorDelete(true);
+    }
+  };
+
   /*---- Decrement counter ----*/
   const postDecrement = async (body) => {
     setLoadingCounter(true);
@@ -103,6 +147,15 @@ const MainScreenContainer = () => {
     get();
   }, []);
 
+  /*---- Select a counter ----*/
+  const handleClickSelectCounter = (e) => {
+    if (e === selectedACounter) {
+      setSelectedACounter("");
+      return;
+    }
+    setSelectedACounter(e);
+  };
+
   /*---- Retry get ----*/
   const handleClickRetryGet = () => get();
 
@@ -123,7 +176,7 @@ const MainScreenContainer = () => {
   /*---- Open modal ----*/
   const handleClickAddCounter = () => {
     setModalAddCounter(!modalAddCounter);
-  }
+  };
 
   /*---- Search ----*/
   const handleChangeSearch = (e) => {
@@ -178,8 +231,11 @@ const MainScreenContainer = () => {
       loading={loading}
       state={state}
       counters={counters}
+      selectedACounter={selectedACounter}
       search={search}
       refreshingState={refreshingState}
+      modalDeleteCounter={modalDeleteCounter}
+      errorDelete={errorDelete}
       modalAddCounter={modalAddCounter}
       modalNoMinus={modalNoMinus}
       setModalAddCounter={setModalAddCounter}
@@ -193,6 +249,10 @@ const MainScreenContainer = () => {
       handleClickNoMinusCounter={handleClickNoMinusCounter}
       handleClickRefreshing={handleClickRefreshing}
       handleClickRetryGet={handleClickRetryGet}
+      handleClickSelectCounter={handleClickSelectCounter}
+      handleClickDeleteModal={handleClickDeleteModal}
+      handleClickDeleteCounter={handleClickDeleteCounter}
+      handleClickClouseErrorDeleteModal={handleClickClouseErrorDeleteModal}
     />
   );
 };
