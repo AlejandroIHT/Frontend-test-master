@@ -121,7 +121,9 @@ const MainScreenContainer = () => {
   };
 
   /*---- Open modal ----*/
-  const handleClickAddCounter = () => setModalAddCounter(!modalAddCounter);
+  const handleClickAddCounter = () => {
+    setModalAddCounter(!modalAddCounter);
+  }
 
   /*---- Search ----*/
   const handleChangeSearch = (e) => {

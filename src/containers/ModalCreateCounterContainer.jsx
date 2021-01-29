@@ -5,10 +5,15 @@ import Http from "../libs/http";
 
 const API = "/api/v1/counter";
 
-const ModalCreateCounterContainer = ({ isOpen, setModalAddCounter, handleClickClouse }) => {
+const ModalCreateCounterContainer = ({
+  isOpen,
+  setModalAddCounter,
+  handleClickClouse,
+}) => {
   const [counter, setCounter] = useState({ title: "" });
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [modalExampleCounters, setModalExampleCounters] = useState(false)
   const [error, setError] = useState(null);
   const { addCounters } = useContext(AppContext);
 
@@ -35,6 +40,16 @@ const ModalCreateCounterContainer = ({ isOpen, setModalAddCounter, handleClickCl
     }
   };
 
+  /*---- Modal Example Counters ----*/
+  const handleClickExampleCounters = () => {
+    setModalExampleCounters(!modalExampleCounters);
+  }
+
+  const handleClickSelectOption = (e) => {
+    setCounter({ title: e.target.name });
+    setModalExampleCounters(!modalExampleCounters);
+  }
+
   /*---- Clouse Modal in Modal ----*/
   const handleClickClouseModalInModal = () => setModal(!modal);
 
@@ -45,10 +60,13 @@ const ModalCreateCounterContainer = ({ isOpen, setModalAddCounter, handleClickCl
       loading={loading}
       error={error}
       modal={modal}
+      modalExampleCounters={modalExampleCounters}
       handleClickClouse={handleClickClouse}
       handleClickSendNewCounter={handleClickSendNewCounter}
       handleChangeNewCounter={handleChangeNewCounter}
       handleClickClouseModalInModal={handleClickClouseModalInModal}
+      handleClickExampleCounters={handleClickExampleCounters}
+      handleClickSelectOption={handleClickSelectOption}
     />
   );
 };

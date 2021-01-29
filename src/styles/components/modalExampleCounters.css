@@ -1,0 +1,51 @@
+@import "../globalStyle.css";
+
+.ModalExampleCounters__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 16px;
+  border-bottom: 3px solid rgba(196, 196, 196, 0.15);
+}
+
+.ModalExampleCounters__header__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.ModalExampleCounters__header--clouseBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--semi--lightGray-color);
+  padding: 8px;
+  margin-right: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.ModalExampleCounters__header--title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000;
+}
+
+/*---- BODY ----*/
+.ModalExampleCounters__body {
+  padding: 21px 16px;
+}
+
+.ModalExampleCounters__body__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ModalExampleCounters__body__container--textHelp {
+  font-size: 15px;
+  color: var(--gray-color);
+  margin-bottom: 15px;
+}
