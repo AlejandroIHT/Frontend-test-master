@@ -1,4 +1,4 @@
-@import '../globalStyle.css';
+@import "../globalStyle.css";
 
 .search {
   position: relative;
@@ -8,13 +8,17 @@
 }
 
 .search__input {
-  width: 25vw;
+  width: 350px;
   font-weight: 400;
   color: var(--black-color);
   background: transparent;
   border: none;
   font-size: 16px;
   padding: 16px 22px 16px 17px;
+}
+
+.search__input.active {
+  width: 248px;
 }
 
 .search img {
@@ -36,11 +40,49 @@
   cursor: pointer;
 }
 
+.tasks__search__container.active  {
+  width: 320px;
+}
+
 .search__input:active,
 .search__input:focus {
   outline: none;
 }
 
-.search__input:focus + label{
+.search__input:focus {
+  width: 248px;
+}
+
+.search__input:focus + label {
+  width: 320px;
   outline: none;
+  border: 2px solid #ff9500;
+}
+
+.search__cancelBtn {
+  display: none;
+}
+
+.search__cancelBtn.active {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #fbfbfb;
+  padding: 14px 18px;
+  margin-left: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search__input:focus ~ button {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #fbfbfb;
+  padding: 14px 18px;
+  margin-left: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
 }

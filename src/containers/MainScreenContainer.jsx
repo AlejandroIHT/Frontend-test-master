@@ -21,6 +21,7 @@ const MainScreenContainer = () => {
   const { state, getCounters } = useContext(AppContext);
   const { counters } = state;
   const [search, setSearch] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   /*---- Take data base ----*/
   const get = async () => {
@@ -124,11 +125,17 @@ const MainScreenContainer = () => {
 
   /*---- Search ----*/
   const handleChangeSearch = (e) => {
+    setSearchValue(e.target.value);
     const filterSearch = counters.filter((item) =>
       item.title.toUpperCase().includes(e.target.value.toUpperCase())
     );
 
     setSearch(filterSearch);
+  };
+
+  const handleClickCancelSearch = () => {
+    setSearchValue("");
+    setSearch(counters);
   };
 
   /*---- No Minus Counter ----*/
@@ -175,8 +182,10 @@ const MainScreenContainer = () => {
       modalNoMinus={modalNoMinus}
       setModalAddCounter={setModalAddCounter}
       times={times}
+      searchValue={searchValue}
       handleClickAddCounter={handleClickAddCounter}
       handleChangeSearch={handleChangeSearch}
+      handleClickCancelSearch={handleClickCancelSearch}
       handleClickMinus={handleClickMinus}
       handleClickIncrement={handleClickIncrement}
       handleClickNoMinusCounter={handleClickNoMinusCounter}

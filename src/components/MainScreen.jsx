@@ -18,6 +18,7 @@ const MainScreen = ({
   state,
   counters,
   search,
+  searchValue,
   refreshingState,
   modalAddCounter,
   modalNoMinus,
@@ -25,17 +26,22 @@ const MainScreen = ({
   times,
   handleClickAddCounter,
   handleChangeSearch,
+  handleClickCancelSearch,
   handleClickMinus,
   handleClickIncrement,
   handleClickNoMinusCounter,
   handleClickRefreshing,
-  handleClickRetryGet
+  handleClickRetryGet,
 }) => {
   return (
     <div className="MainScreen">
       <div className="MainScreen__container">
         <header className="MainScreen__container__header">
-          <Search handleChange={handleChangeSearch} />
+          <Search
+            value={searchValue}
+            handleChange={handleChangeSearch}
+            handleClick={handleClickCancelSearch}
+          />
         </header>
         {loading ? (
           <div className="MainScreen__container__loader">
