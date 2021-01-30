@@ -1,0 +1,31 @@
+@import '../../globalStyle.css';
+
+.ExamplesCountersSections {
+  padding: 15px 0;
+}
+
+.ExamplesCountersSections__title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 9px;
+}
+
+.ExamplesCountersSections__body {
+  overflow: auto;
+  white-space: nowrap;
+  padding-bottom: 8px;
+}
+
+.ExamplesCountersSections__body--buttonType {
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000;
+  padding: 8px 18px;
+  margin-right: 16px;
+  background-color: #ececec;
+  border: 1px solid #dcdcdf;
+  border-radius: 40px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}

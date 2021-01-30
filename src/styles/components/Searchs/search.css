@@ -1,0 +1,112 @@
+@import "../../globalStyle.css";
+
+.search {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search__input {
+  width: 350px;
+  font-weight: 400;
+  color: var(--black-color);
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  padding: 16px 22px 16px 17px;
+}
+
+.search__input.active {
+  width: 248px;
+}
+
+.search img {
+  margin-left: 22px;
+}
+
+.tasks__search__container {
+  width: 100%;
+  height: 48px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--gray-color);
+  padding: 0;
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tasks__search__container.active  {
+  width: 320px;
+}
+
+.search__input:active,
+.search__input:focus {
+  outline: none;
+}
+
+.search__input:focus {
+  width: 248px;
+}
+
+.search__input:focus + label {
+  width: 320px;
+  outline: none;
+  border: 2px solid #ff9500;
+}
+
+.search__cancelBtn {
+  display: none;
+}
+
+.search__cancelBtn.active {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #fbfbfb;
+  padding: 14px 18px;
+  margin-left: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search__input:focus ~ button {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #fbfbfb;
+  padding: 14px 18px;
+  margin-left: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .search {
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  #search {
+    width: calc(100% - 39px);
+  }
+
+  .search__input.active {
+    width: calc(100% - 142px);
+  }
+
+  .tasks__search__container.active  {
+    width: calc(100% - 103px);
+  }
+
+  .search__input:focus + label {
+    width: calc(100% - 103px);
+  }
+}

@@ -3,7 +3,7 @@ import "../styles/globalStyle.css";
 import useInitialState from "../hooks/useInitialState";
 import AppContext from "../context/AppContext";
 import MainScreenContainer from "./MainScreenContainer";
-import WelcomeScreen from "../components/WelcomeScreen";
+import WelcomeScreen from "../components/MainScreen/WelcomeScreen";
 import Storage from "../libs/storage";
 
 const App = () => {
