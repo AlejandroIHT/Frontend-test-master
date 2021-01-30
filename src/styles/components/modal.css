@@ -36,5 +36,17 @@
 }
 
 @media (max-width: 576px) {
+  .Modal.fullWidth {
+    align-items: flex-end;
+  }
 
+  .Modal__container {
+    width: 100%;
+    height: 90vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .Modal__container.small {
+    margin: 0 51px;
+  }
 }

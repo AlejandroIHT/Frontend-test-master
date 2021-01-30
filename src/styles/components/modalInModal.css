@@ -14,8 +14,14 @@
 }
 
 .ModalInModal__container {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   margin: 0 28px;
   border-radius: 10px;
   box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 576px) {
+  .ModalInModal__container {
+    margin: 0 51px;
+  }
 }

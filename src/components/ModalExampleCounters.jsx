@@ -10,7 +10,7 @@ const ModalExampleCounters = ({ isOpen, handleClickClouse, handleClickSelectOpti
   const { examples } = state;
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} fullWidth>
       <div className="ModalExampleCounters__header">
         <div className="ModalExampleCounters__header__container">
           <button

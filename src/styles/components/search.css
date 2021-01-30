@@ -98,6 +98,14 @@
     width: calc(100% - 39px);
   }
 
+  .search__input.active {
+    width: calc(100% - 142px);
+  }
+
+  .tasks__search__container.active  {
+    width: calc(100% - 103px);
+  }
+
   .search__input:focus + label {
     width: calc(100% - 103px);
   }

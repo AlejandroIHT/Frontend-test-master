@@ -23,7 +23,7 @@ const ModalCreateCounter = ({
 }) => {
   return (
     <>
-      <Modal isOpen={isOpen}>
+      <Modal isOpen={isOpen} fullWidth>
         <div className="ModalCreateCounter__header">
           <div className="ModalCreateCounter__header__container">
             <button
