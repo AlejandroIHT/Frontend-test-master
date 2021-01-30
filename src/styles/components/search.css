@@ -86,3 +86,19 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+@media (max-width: 576px) {
+  .search {
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  #search {
+    width: calc(100% - 39px);
+  }
+
+  .search__input:focus + label {
+    width: calc(100% - 103px);
+  }
+}

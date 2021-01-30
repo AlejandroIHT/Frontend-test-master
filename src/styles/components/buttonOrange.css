@@ -1,4 +1,4 @@
-@import '../globalStyle.css';
+@import "../globalStyle.css";
 
 .ButtonOrange {
   display: flex;
@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.ButtonOrange.disable{
+.ButtonOrange.disable {
   opacity: 0.5;
   cursor: initial;
 }
@@ -26,4 +26,16 @@
 
 .margin-right-10 {
   margin-right: 10px;
+}
+
+@media (max-width: 992px) {
+  .ButtonOrange.margin-right {
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 576px) {
+  .ButtonOrange.margin-right {
+    margin-right: 16px;
+  }
 }

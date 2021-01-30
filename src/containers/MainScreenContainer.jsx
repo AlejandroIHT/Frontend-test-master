@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import AppContext from "../context/AppContext";
 import Http from "../libs/http";
 import MainScreen from "../components/MainScreen";
-import ToolsShare from "../components/ToolsShare";
 
 const API_GET = "/api/v1/counter";
 const API_DECREMENT = "/api/v1/counter/dec";

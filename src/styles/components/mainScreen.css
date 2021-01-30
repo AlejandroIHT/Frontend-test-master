@@ -118,3 +118,23 @@
 .containerBtns__containerTool {
   position: relative;
 }
+
+@media (max-width: 992px) {
+  .MainScreen__container {
+    width: 80%;
+  }
+
+  .MainScreen__container__footer--containerBtns {
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 576px) {
+  .MainScreen__container {
+    width: 100%;
+  }
+
+  .MainScreen__container__footer--containerBtns {
+    margin-left: 16px;
+  }
+}
