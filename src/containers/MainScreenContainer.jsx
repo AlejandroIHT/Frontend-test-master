@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import AppContext from "../context/AppContext";
 import Http from "../libs/http";
+import { API, POST_INCREMENTS_COUNT, POST_DECREMENTS_COUNT } from "../res/api";
 import MainScreen from "../components/MainScreen";
-
-const API_GET = "/api/v1/counter";
-const API_DECREMENT = "/api/v1/counter/dec";
-const API_INCREMENT = "/api/v1/counter/inc";
 
 const MainScreenContainer = () => {
   const [loading, setLoading] = useState(false);
@@ -34,7 +31,7 @@ const MainScreenContainer = () => {
   const get = async () => {
     if (refreshingState) {
       try {
-        const data = await Http.instance.get(API_GET);
+        const data = await Http.instance.get(API);
         if (data.message) throw Error(error);
 
         //Add global state
@@ -51,7 +48,7 @@ const MainScreenContainer = () => {
 
     setLoading(true);
     try {
-      const data = await Http.instance.get(API_GET);
+      const data = await Http.instance.get(API);
       if (data.message) throw Error(error);
 
       //Add global state
@@ -81,7 +78,7 @@ const MainScreenContainer = () => {
   const handleClickDeleteCounter = async () => {
     try {
       const data = await Http.instance.delete(
-        API_GET,
+        API,
         JSON.stringify({ id: selectedACounter })
       );
       if (data.message) throw Error(error);
@@ -97,6 +94,7 @@ const MainScreenContainer = () => {
       setSearch(searchData);
       setModalDeleteCounter({ counter: {}, modal: false });
       setSelectedACounter("");
+      setSearchValue("")
       setErrorDelete(false);
     } catch (error) {
       setModalDeleteCounter({ ...modalDeleteCounter, modal: false });
@@ -107,7 +105,7 @@ const MainScreenContainer = () => {
   /*---- Decrement counter ----*/
   const postDecrement = async (body) => {
     setLoadingCounter(true);
-    const data = await Http.instance.post(API_DECREMENT, JSON.stringify(body));
+    const data = await Http.instance.post(POST_DECREMENTS_COUNT, JSON.stringify(body));
     const upDateCounters = counters.map((item) => {
       if (item.id === data.id) item.count = data.count;
       return item;
@@ -127,7 +125,7 @@ const MainScreenContainer = () => {
   /*---- Increment counter ----*/
   const postIncrement = async (body) => {
     setLoadingCounter(true);
-    const data = await Http.instance.post(API_INCREMENT, JSON.stringify(body));
+    const data = await Http.instance.post(POST_INCREMENTS_COUNT, JSON.stringify(body));
     const upDateCounters = counters.map((item) => {
       if (item.id === data.id) item.count = data.count;
       return item;

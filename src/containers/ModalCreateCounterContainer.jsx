@@ -2,8 +2,7 @@ import React, { useState, useContext } from "react";
 import AppContext from "../context/AppContext";
 import ModalCreateCounter from "../components/ModalCreateCounter";
 import Http from "../libs/http";
-
-const API = "/api/v1/counter";
+import { API } from "../res/api";
 
 const ModalCreateCounterContainer = ({
   isOpen,
@@ -13,7 +12,7 @@ const ModalCreateCounterContainer = ({
   const [counter, setCounter] = useState({ title: "" });
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
-  const [modalExampleCounters, setModalExampleCounters] = useState(false)
+  const [modalExampleCounters, setModalExampleCounters] = useState(false);
   const [error, setError] = useState(null);
   const { addCounters } = useContext(AppContext);
 
@@ -43,12 +42,12 @@ const ModalCreateCounterContainer = ({
   /*---- Modal Example Counters ----*/
   const handleClickExampleCounters = () => {
     setModalExampleCounters(!modalExampleCounters);
-  }
+  };
 
   const handleClickSelectOption = (e) => {
     setCounter({ title: e.target.name });
     setModalExampleCounters(!modalExampleCounters);
-  }
+  };
 
   /*---- Clouse Modal in Modal ----*/
   const handleClickClouseModalInModal = () => setModal(!modal);

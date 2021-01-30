@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./styles/globalStyle.css";
-import useInitialState from "./hooks/useInitialState";
-import AppContext from "./context/AppContext";
-import MainScreenContainer from "./containers/MainScreenContainer";
-import WelcomeScreen from "./components/WelcomeScreen";
-import Storage from "./libs/storage";
+import "../styles/globalStyle.css";
+import useInitialState from "../hooks/useInitialState";
+import AppContext from "../context/AppContext";
+import MainScreenContainer from "./MainScreenContainer";
+import WelcomeScreen from "../components/WelcomeScreen";
+import Storage from "../libs/storage";
 
 const App = () => {
   const [welcome, setWelcome] = useState(true);
@@ -16,7 +16,6 @@ const App = () => {
 
   const handleClickStart = () => {
     Storage.instance.post("welcome", "true");
-    console.log("Entre")
     setWelcome(false);
   };
 
