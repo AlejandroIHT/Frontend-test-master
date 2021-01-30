@@ -206,7 +206,9 @@ const MainScreenContainer = () => {
 
   const handleClickCopyCounter = () => {
     try {
-      navigator.clipboard.writeText(toolShare.counter.title);
+      navigator.clipboard.writeText(
+        `${toolShare.counter.count} x ${toolShare.counter.title}`
+      );
       setToolShare({ counter: {}, tool: false });
     } catch (error) {
       console.error(error);

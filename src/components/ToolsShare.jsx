@@ -22,7 +22,7 @@ const ToolsShare = ({ data, handleClickCopyCounter }) => {
             <div></div>
           </div>
           <div className="ToolsShare__copy--text">
-            <p className="text">{data.counter.title}</p>
+            <p className="text">{`${data.counter.count} x ${data.counter.title}`}</p>
           </div>
         </div>
       </div>
