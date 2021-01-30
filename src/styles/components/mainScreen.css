@@ -114,3 +114,7 @@
   justify-content: flex-start;
   margin-left: 20%;
 }
+
+.containerBtns__containerTool {
+  position: relative;
+}

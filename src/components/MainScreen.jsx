@@ -11,6 +11,7 @@ import ModalDeleteCounter from "./ModalDeleteCounter";
 import ModalErrorDelete from "./ModalErrorDelete";
 import ModalNoMinus from "./ModalNoMinus";
 import ErrorScreen from "./ErrorScreen";
+import ToolsShare from "./ToolsShare";
 import plus from "../assets/mainScreen/plus.svg";
 import refreshing from "../assets/mainScreen/refreshing.svg";
 import refreshingActive from "../assets/mainScreen/refreshingActive.svg";
@@ -28,6 +29,7 @@ const MainScreen = ({
   refreshingState,
   modalDeleteCounter,
   errorDelete,
+  toolShare,
   modalAddCounter,
   modalNoMinus,
   setModalAddCounter,
@@ -44,6 +46,8 @@ const MainScreen = ({
   handleClickDeleteModal,
   handleClickDeleteCounter,
   handleClickClouseErrorDeleteModal,
+  handleClickToolShare,
+  handleClickCopyCounter,
 }) => {
   return (
     <div className="MainScreen">
@@ -165,9 +169,17 @@ const MainScreen = ({
               >
                 <img src={deleteIcon} alt="delete icon" />
               </ButtonWhite>
-              <ButtonWhite>
-                <img src={shareIcon} alt="share icon" />
-              </ButtonWhite>
+              <div className="containerBtns__containerTool">
+                {toolShare.tool && (
+                  <ToolsShare
+                    data={toolShare}
+                    handleClickCopyCounter={handleClickCopyCounter}
+                  />
+                )}
+                <ButtonWhite handleClick={handleClickToolShare}>
+                  <img src={shareIcon} alt="share icon" />
+                </ButtonWhite>
+              </div>
             </>
           )}
         </div>

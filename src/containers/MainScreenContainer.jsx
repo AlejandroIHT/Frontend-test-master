@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import AppContext from "../context/AppContext";
 import Http from "../libs/http";
 import MainScreen from "../components/MainScreen";
+import ToolsShare from "../components/ToolsShare";
 
 const API_GET = "/api/v1/counter";
 const API_DECREMENT = "/api/v1/counter/dec";
@@ -13,6 +14,7 @@ const MainScreenContainer = () => {
   const [loadingCounter, setLoadingCounter] = useState(false);
   const [refreshingState, setRefreshingState] = useState(false);
   const [selectedACounter, setSelectedACounter] = useState("");
+  const [toolShare, setToolShare] = useState(false);
   const [modalDeleteCounter, setModalDeleteCounter] = useState({
     counter: {},
     modal: false,
@@ -95,7 +97,7 @@ const MainScreenContainer = () => {
       );
       setSearch(searchData);
       setModalDeleteCounter({ counter: {}, modal: false });
-      setSelectedACounter("")
+      setSelectedACounter("");
       setErrorDelete(false);
     } catch (error) {
       setModalDeleteCounter({ ...modalDeleteCounter, modal: false });
@@ -193,6 +195,26 @@ const MainScreenContainer = () => {
     setSearch(counters);
   };
 
+  /*---- Tool Share ----*/
+  const handleClickToolShare = () => {
+    if (toolShare.tool) {
+      setToolShare({ counter: {}, tool: false });
+      return;
+    }
+    const counter = counters.filter((item) => item.id === selectedACounter);
+    setToolShare({ counter: counter[0], tool: true });
+  };
+
+  const handleClickCopyCounter = () => {
+    try {
+      navigator.clipboard.writeText(toolShare.counter.title);
+      setToolShare({ counter: {}, tool: false });
+    } catch (error) {
+      console.error(error);
+      setToolShare({ counter: {}, tool: false });
+    }
+  };
+
   /*---- No Minus Counter ----*/
   const handleClickMinus = (e) => {
     const counter = counters.filter((item) => item.id === e);
@@ -236,6 +258,7 @@ const MainScreenContainer = () => {
       refreshingState={refreshingState}
       modalDeleteCounter={modalDeleteCounter}
       errorDelete={errorDelete}
+      toolShare={toolShare}
       modalAddCounter={modalAddCounter}
       modalNoMinus={modalNoMinus}
       setModalAddCounter={setModalAddCounter}
@@ -253,6 +276,8 @@ const MainScreenContainer = () => {
       handleClickDeleteModal={handleClickDeleteModal}
       handleClickDeleteCounter={handleClickDeleteCounter}
       handleClickClouseErrorDeleteModal={handleClickClouseErrorDeleteModal}
+      handleClickToolShare={handleClickToolShare}
+      handleClickCopyCounter={handleClickCopyCounter}
     />
   );
 };
