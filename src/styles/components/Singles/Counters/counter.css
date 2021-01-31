@@ -1,0 +1,61 @@
+@import "../../../globalStyle.css";
+
+.Counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 6px;
+}
+
+.Counter.active {
+  background-color: rgb(255, 149, 0, .2);
+}
+
+.Counter__button__title {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Counter__button__title:focus,
+.Counter__button__title:active {
+  outline: none;
+}
+
+.Counter__button__title--title {
+  font-size: 17px;
+  color: var(--main-black-color);
+  padding-right: 28px;
+}
+
+.Counter__container__count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Counter__container__count--button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Counter__container__count--button.disable {
+  cursor: initial;
+}
+
+.Coutner__container__count--number {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0 18px;
+}
+
+.Coutner__container__count--number.disable {
+  color: var(--gray-color);
+}

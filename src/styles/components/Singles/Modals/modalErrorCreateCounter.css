@@ -1,0 +1,24 @@
+@import "../../../globalStyle.css";
+
+.ModalErrorCreateCounter__body__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 27px;
+  text-align: center;
+}
+
+.ModalErrorCreateCounter__body__container--title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--black-color);
+  margin-bottom: 6px;
+}
+
+.ModalErrorCreateCounter__body__container--body {
+  font-size: 17px;
+  color: var(--lightBlack-color);
+  margin-bottom: 21px;
+  text-align: center;
+}

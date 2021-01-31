@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import AppContext from "../context/AppContext";
 import Http from "../libs/http";
 import { API, POST_INCREMENTS_COUNT, POST_DECREMENTS_COUNT } from "../res/api";
-import MainScreen from "../components/MainScreen/MainScreen";
+import MainScreen from "../components/Templates/MainScreen/MainScreen";
 
 const MainScreenContainer = () => {
   const [loading, setLoading] = useState(false);

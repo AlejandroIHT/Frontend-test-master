@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import AppContext from "../context/AppContext";
-import ModalCreateCounter from "../components/Modals/ModalCreateCounter";
+import ModalCreateCounter from "../components/Singles/Modals/ModalCreateCounter";
 import Http from "../libs/http";
 import { API } from "../res/api";
 
