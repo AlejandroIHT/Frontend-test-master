@@ -4,7 +4,8 @@
   "description": "Frontend test for cornershop app",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"node server/index.js\""
+    "start": "concurrently \"react-scripts start\" \"node server/index.js\"",
+    "test": "cucumber-js"
   },
   "author": "Cornershop",
   "license": "ISC",
@@ -31,5 +32,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0"
   }
 }
