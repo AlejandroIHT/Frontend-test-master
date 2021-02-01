@@ -4,12 +4,7 @@ import ExamplesCountersSectionsMock from "../../../../__mocks__/ExamplesCounters
 import ExamplesCountersSections from "../../../../components/Singles/ExamplesCountersSections/ExamplesCountersSections";
 
 describe("<ExamplesCountersSections />", () => {
-  const examplesCountersSections = shallow(
-    <ExamplesCountersSections
-      data={ExamplesCountersSectionsMock.data}
-      options={ExamplesCountersSectionsMock.options}
-    />
-  );
+  const examplesCountersSections = shallow(<ExamplesCountersSections data={ExamplesCountersSectionsMock.data} />);
 
   test("ExamplesCountersSections component render", () => {
     expect(examplesCountersSections.length).toEqual(1);

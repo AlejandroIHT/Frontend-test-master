@@ -1,8 +1,8 @@
 const ExamplesCountersSectionsMock = {
   data: {
     title: "",
-    options: []
-  },
+    options: [],
+  }
 };
 
 export default ExamplesCountersSectionsMock;
