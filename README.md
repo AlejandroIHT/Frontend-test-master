@@ -130,7 +130,7 @@ We hope your submission is… to die for.
 
 ## How was it builded?
 
-In the first instance, the design was analyzed, how many screens it has and what components were repeated. It was decided to divide the components that have logic and those that don't, but always trying to make the components that reflect the UI 100% reusable. Then it was seen what type and quantity of requests had to be made and what information had to be globally (seeing the possibility that this application could grow). At this point, it was seen that the information that had to be in the global state was not very complex, so it was decided to use "Context" and not another alternative such as "Redux", since it would generate a greater weight of the application. Everything was developed thinking that the application would grow in the future.
+In the first instance, the design was analyzed, how many screens it has, what components were repeated and the use cases of the app (business logic). It was decided to divide the components that have logic and those that don't, but always trying to ensure that the components that reflect the UI are 100% reusable and that they can be adapted to the business logic. Then it was seen what type and amount of requests had to be made and what information should be global (seeing the possibility that this application could grow). At this point, it was seen that the information that should be in the global state was not very complex, so it was decided to use "Context" and not another alternative such as "Redux", since it would generate a greater weight of the application. Everything was developed thinking that the application would grow in the future.
 
 ## Test BDD
 
