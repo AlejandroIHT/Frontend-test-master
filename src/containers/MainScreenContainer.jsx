@@ -26,8 +26,8 @@ const MainScreenContainer = () => {
   const { counters } = state;
   const [search, setSearch] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
-  /*---- Take data base ----*/
+  
+  /*---- Take Data Base ----*/
   const get = async () => {
     if (refreshingState) {
       try {
@@ -62,8 +62,9 @@ const MainScreenContainer = () => {
       setRefreshingState(false);
     }
   };
+  /*---- End Take Data Base ----*/
 
-  /*---- Delete counter ----*/
+  /*---- Delete Counter ----*/
   const handleClickDeleteModal = () => {
     if (modalDeleteCounter.modal) {
       setModalDeleteCounter({ counter: {}, modal: false });
@@ -101,8 +102,9 @@ const MainScreenContainer = () => {
       setErrorDelete(true);
     }
   };
+  /*---- End Delete Counter ----*/
 
-  /*---- Decrement counter ----*/
+  /*---- Decrement Counter ----*/
   const postDecrement = async (body) => {
     setLoadingCounter(true);
     const data = await Http.instance.post(POST_DECREMENTS_COUNT, JSON.stringify(body));
@@ -121,8 +123,9 @@ const MainScreenContainer = () => {
     setSearch(searchData);
     setLoadingCounter(false);
   };
+  /*---- End Decrement Counter ----*/
 
-  /*---- Increment counter ----*/
+  /*---- Increment Counter ----*/
   const postIncrement = async (body) => {
     setLoadingCounter(true);
     const data = await Http.instance.post(POST_INCREMENTS_COUNT, JSON.stringify(body));
@@ -145,8 +148,9 @@ const MainScreenContainer = () => {
   useEffect(() => {
     get();
   }, []);
+  /*---- End Increment Counter ----*/
 
-  /*---- Select a counter ----*/
+  /*---- Select A Counter ----*/
   const handleClickSelectCounter = (e) => {
     if (e === selectedACounter) {
       setSelectedACounter("");
@@ -154,14 +158,17 @@ const MainScreenContainer = () => {
     }
     setSelectedACounter(e);
   };
+  /*---- End Select A Counter ----*/
 
-  /*---- Retry get ----*/
+  /*---- Retry Get ----*/
   const handleClickRetryGet = () => get();
+  /*---- End Retry Get ----*/
 
-  /*---- Update search ----*/
+  /*---- Update Search ----*/
   useEffect(() => {
     if (!loadingCounter) setSearch(counters);
   }, [counters]);
+  /*---- End Update Search ----*/
 
   /*---- Refreshing ----*/
   useEffect(() => {
@@ -171,11 +178,13 @@ const MainScreenContainer = () => {
   const handleClickRefreshing = () => {
     setRefreshingState(true);
   };
+  /*---- End Refreshing ----*/
 
-  /*---- Open modal ----*/
+  /*---- Open Modal ----*/
   const handleClickAddCounter = () => {
     setModalAddCounter(!modalAddCounter);
   };
+  /*---- End Open Modal ----*/
 
   /*---- Search ----*/
   const handleChangeSearch = (e) => {
@@ -191,6 +200,7 @@ const MainScreenContainer = () => {
     setSearchValue("");
     setSearch(counters);
   };
+  /*---- End Search ----*/
 
   /*---- Tool Share ----*/
   const handleClickToolShare = () => {
@@ -213,6 +223,7 @@ const MainScreenContainer = () => {
       setToolShare({ counter: {}, tool: false });
     }
   };
+  /*---- End Tool Share ----*/
 
   /*---- No Minus Counter ----*/
   const handleClickMinus = (e) => {
@@ -236,6 +247,7 @@ const MainScreenContainer = () => {
 
   const handleClickNoMinusCounter = () =>
     setModalNoMinus({ ...modalNoMinus, modal: !modalNoMinus.modal });
+  /*---- End No Minus Counter ----*/
 
   /*---- Times Amount ----*/
   const times = () => {
@@ -245,6 +257,7 @@ const MainScreenContainer = () => {
     });
     return timesAmount;
   };
+  /*---- End Times Amount ----*/
 
   return (
     <MainScreen
