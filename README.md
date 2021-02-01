@@ -24,7 +24,7 @@ Your submission will be evaluated considering the following criterias:
   - Extra points for writing custom styling code for UI elements.
   - Use whatever CSS flavor you want: plane old CSS, SASS, LESS, CSS-in-JS, CSS modules, everything is allowed.
 - Good architecture and software design.
-  - _Hint:_ Usage of design patterns, good code organization, separation of concerns, etc. 
+  - _Hint:_ Usage of design patterns, good code organization, separation of concerns, etc.
 - Use of best practices when writing code.
   - _Hint:_ Idiomatic & readable code, good use of composition, DRY, etc.
 - The application must persist data back to the server.
@@ -64,9 +64,10 @@ Since the backend API runs locally on a different port (`3001`) than the `react-
 #### **GET** `/api/v1/counter`.
 
 _Fetch a list of counters._
+
 ```javascript
 /* Response */
-[]
+[];
 ```
 
 #### **POST** `/api/v1/counter`.
@@ -82,7 +83,9 @@ _Adds a counter._
 ```
 
 #### **POST** `/api/v1/counter/inc`
+
 _Increments the value of a counter._
+
 ```javascript
 /* Body */
 { id: "asdf" }
@@ -92,6 +95,7 @@ _Increments the value of a counter._
 ```
 
 #### **POST** `/api/v1/counter/dec`
+
 _Decrements the value of a counter._
 
 ```javascript
@@ -103,15 +107,19 @@ _Decrements the value of a counter._
 ```
 
 #### **DELETE** `/api/v1/counter`
+
 _Deletes a counter._
 
 ```javascript
 /* Body */
-{ id: "qwer" }
+{
+  id: "qwer";
+}
 
 /* Response */
-"qwer" // The id of the deleted counter
+("qwer"); // The id of the deleted counter
 ```
+
 ---
 
 Good luck! 🎉
@@ -119,3 +127,23 @@ Good luck! 🎉
 We hope your submission is… to die for.
 
 ![Coffin dance](coffin.gif)
+
+## My considerations
+
+In the first instance, the design was analyzed, how many screens it has and what components were repeated. It was decided to divide the components that have logic and those that don't, but always trying to make the components that reflect the UI 100% reusable. Then it was seen what type and quantity of requests had to be made and what information had to be globally (seeing the possibility that this application could grow). At this point, it was seen that the information that had to be in the global state was not very complex, so it was decided to use "Context" and not another alternative such as "Redux", since it would generate a greater weight of the application. Everything was developed thinking that the application would grow in the future.
+
+## Test BDD
+
+In the project folder use code:
+
+```bash
+npm test
+```
+
+## Unit test
+
+In the project folder use code:
+
+```bash
+npm run test:jest
+```
